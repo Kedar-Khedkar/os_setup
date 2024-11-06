@@ -112,7 +112,7 @@ alias windows='~/boot_to_windows.sh'
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export PATH="/usr/bin:$PATH"
 source /etc/zsh_command_not_found
-export CLASSPATH="/home/kedar/code/java/Assignments DS/a2/target/dependency/*"
+
 # NVM
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
