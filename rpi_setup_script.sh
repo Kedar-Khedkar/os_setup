@@ -5,6 +5,13 @@ echo 'Starting installation ....... ⬇'
 echo 'Installing git'
 
 
+
+if ! sudo apt update && sudo apt upgrade -y >/dev/null 2>&1; then
+    echo "failed ❌"
+else
+    echo "system updated"
+fi
+
 if ! sudo apt install git-all >/dev/null 2>&1; then
     echo "failed ❌"
 else
@@ -13,33 +20,35 @@ fi
 
 echo 'Installing zsh '
 
-if ! sudo apt-get update && sudo apt-get upgrade && sudo apt-get install zsh -y >/dev/null 2>&1; then
+if ! sudo apt install zsh -y >/dev/null 2>&1; then
     echo "failed"
 else
     echo "zsh installation successful ✅"
 fi
 
-echo 'Installing ohmyzsh '
 
-if ! sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" >/dev/null 2>&1; then
-    echo "failed ❌"
-else
-    echo "oh my zsh installation completed ✅"
-fi
 
-echo 'Installing ohmyzsh plugin'
+# echo 'Installing ohmyzsh '
 
-if ! git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions >/dev/null 2>&1; then
-    echo "failed ❌"
-else
-    echo "oh my zsh autosuggestion installation completed ✅"
-fi
+# if ! sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" >/dev/null 2>&1; then
+#     echo "failed ❌"
+# else
+#     echo "oh my zsh installation completed ✅"
+# fi
 
-if ! git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting >/dev/null 2>&1; then
-    echo "failed ❌"
-else
-    echo "oh my zsh syntax highlighting installation completed ✅"
-fi
+# echo 'Installing ohmyzsh plugin'
+
+# if ! git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions >/dev/null 2>&1; then
+#     echo "failed ❌"
+# else
+#     echo "oh my zsh autosuggestion installation completed ✅"
+# fi
+
+# if ! git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting >/dev/null 2>&1; then
+#     echo "failed ❌"
+# else
+#     echo "oh my zsh syntax highlighting installation completed ✅"
+# fi
 
 echo 'zsh setup started..........'
 
@@ -98,16 +107,14 @@ else
     echo "succeeded docker🐳 installation ✅ "
 fi
 
-echo 'installing omv'
+echo 'Installing omv.......'
 
 if ! wget -O - https://raw.githubusercontent.com/OpenMediaVault-Plugin-Developers/installScript/master/install | sudo bash >/dev/null 2>&1; then
     echo "failed"
 else
-    sudo docker run hello-world
+   
     echo "succeeded omv installation ✅ "
 fi
 
 
-echo "Rebooting in 3 secs"
-sleep 3
-sudo reboot
+
